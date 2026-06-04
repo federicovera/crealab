@@ -7,29 +7,31 @@ Seguimiento completo del proyecto. Tildá cada tarea al completarla.
 ## FASE 0 — Infraestructura del servidor
 *Objetivo: servidor andando con WordPress accesible por subdominio*
 
-- [ ] Crear repo en GitHub (`crealab`)
-- [ ] Agregar secrets en GitHub: `SERVER_HOST`, `SERVER_USER`, `SERVER_SSH_KEY`
-- [ ] Crear directorio `/opt/crealab` en el servidor
-- [ ] Clonar repo en el servidor (`git clone`)
-- [ ] Crear `.env` en el servidor con passwords reales (copiar de `.env.example`)
-- [ ] Ejecutar `docker compose up -d` en el servidor
-- [ ] Verificar que WordPress y MariaDB corren (`docker ps`)
-- [ ] Configurar subdominio en Cloudflare (ej: `cursos.flowhub.com.ar` → IP del servidor)
-- [ ] Crear config Nginx para el subdominio (proxy → puerto 8081)
-- [ ] Activar SSL con Certbot (`certbot --nginx -d cursos.flowhub.com.ar`)
-- [ ] Verificar acceso a WordPress por HTTPS
+- [x] Crear repo en GitHub (`crealab`)
+- [x] Agregar secrets en GitHub: `SERVER_HOST`, `SERVER_USER`, `SERVER_SSH_KEY`
+- [x] Crear directorio `/opt/crealab` en el servidor
+- [x] Clonar repo en el servidor (`git clone`)
+- [x] Crear `.env` en el servidor con passwords reales (copiar de `.env.example`)
+- [x] Ejecutar `docker compose up -d` en el servidor
+- [x] Verificar que WordPress y MariaDB corren (`docker ps`)
+- [x] Configurar subdominio en Hetzner DNS (`crealab.flowhub.com.ar` → IP del servidor)
+- [x] Crear config Nginx para el subdominio (proxy → puerto 8081)
+- [x] Activar SSL con Certbot (`certbot --nginx -d crealab.flowhub.com.ar`)
+- [x] Verificar acceso a WordPress por HTTPS
 
 ---
 
 ## FASE 1 — Configuración WordPress (Módulos 1 y 2)
 *Objetivo: admin + tienda + pagos funcionando*
 
-- [ ] Completar wizard de instalación de WordPress
-- [ ] Instalar plugin: WooCommerce
-- [ ] Instalar plugin: Tutor LMS
-- [ ] Instalar plugin: FluentCRM
-- [ ] Instalar plugin: MercadoPago para WooCommerce
-- [ ] Configurar WooCommerce (moneda USD, datos de tienda)
+- [x] Completar wizard de instalación de WordPress
+- [x] Instalar plugin: WooCommerce
+- [x] Instalar plugin: Tutor LMS
+- [x] Instalar plugin: FluentCRM
+- [x] Instalar plugin: MercadoPago para WooCommerce
+- [x] Instalar plugin: CURCY Multi Currency (USD base + ARS para Argentina)
+- [x] Configurar WooCommerce (moneda USD + ARS, cupones activados)
+- [x] Integrar Tutor LMS con WooCommerce (monetización)
 - [ ] Crear producto: Módulo 0 — Programación básica ($12 USD)
 - [ ] Crear producto: Kit Starter + Módulo 1 (precio a definir)
 - [ ] Crear producto: Suscripción curso completo ($15 USD/mes)
@@ -121,5 +123,7 @@ Seguimiento completo del proyecto. Tildá cada tarea al completarla.
 - [x] Definición de módulos del sistema
 - [x] Estructura de pantallas
 - [x] Archivos base del proyecto (`docker-compose.yml`, GitHub Actions, `.gitignore`)
+- [x] Fase 0 completa — servidor + WordPress + HTTPS funcionando
+- [x] Fase 1 parcial — plugins instalados y configurados
 
-**Próximo paso:** Fase 0 — crear repo en GitHub y configurar el servidor
+**Próximo paso:** Fase 1 — crear productos en WooCommerce (Módulo 0, Kit Starter, Suscripción)
