@@ -1,0 +1,34 @@
+services:
+  crealab_db:
+    image: mariadb:11
+    container_name: crealab_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: crealab
+      MYSQL_USER: crealab_user
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - crealab_db_data:/var/lib/mysql
+
+  crealab_wp:
+    image: wordpress:latest
+    container_name: crealab_wp
+    restart: always
+    depends_on:
+      - crealab_db
+    environment:
+      WORDPRESS_DB_HOST: crealab_db:3306
+      WORDPRESS_DB_NAME: crealab
+      WORDPRESS_DB_USER: crealab_user
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - crealab_wp_data:/var/www/html
+
+volumes:
+  crealab_db_data:
+  crealab_wp_data:
