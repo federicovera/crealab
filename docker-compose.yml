@@ -33,6 +33,15 @@ services:
     volumes:
       - crealab_wp_data:/var/www/html
 
+  crealab_frontend:
+    build: ./frontend
+    container_name: crealab_frontend
+    restart: always
+    ports:
+      - "127.0.0.1:3002:3000"
+    environment:
+      NEXT_PUBLIC_WP_URL: https://crealab.flowhub.com.ar
+
 volumes:
   crealab_db_data:
   crealab_wp_data:
