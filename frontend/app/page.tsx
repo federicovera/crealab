@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import LoginForm from "@/components/LoginForm";
+import SessionAlert from "@/components/SessionAlert";
 
 export default function Home() {
   return (
@@ -9,7 +11,6 @@ export default function Home() {
         style={{ background: "linear-gradient(135deg, #FF6B35 0%, #FFD23F 100%)" }}>
 
         <div className="max-w-sm w-full flex flex-col gap-6">
-          {/* Logo */}
           <div className="flex flex-col gap-1">
             <h1 className="text-5xl font-black tracking-tight">
               CreaLab
@@ -19,7 +20,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {["🤖 Robótica", "💻 Programación", "⚡ STEAM", "🏆 Proyectos reales"].map((tag) => (
               <span
@@ -31,7 +31,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Descripción */}
           <p className="text-base font-semibold opacity-90 leading-relaxed">
             La plataforma educativa para aprender programación y robótica
             construyendo proyectos reales. Para jóvenes de 8 a 18 años.
@@ -43,7 +42,6 @@ export default function Home() {
       <div className="lg:w-1/2 flex flex-col items-center justify-center p-12 bg-white">
         <div className="max-w-sm w-full flex flex-col gap-8">
 
-          {/* Header */}
           <div className="flex flex-col gap-1">
             <h2 className="text-3xl font-black text-crealab-text">
               Bienvenido 👋
@@ -53,7 +51,10 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Formulario */}
+          <Suspense>
+            <SessionAlert />
+          </Suspense>
+
           <LoginForm />
 
         </div>

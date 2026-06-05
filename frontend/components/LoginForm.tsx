@@ -1,18 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff, ArrowRight } from "lucide-react";
 
-interface LoginFormProps {
-  onSubmit?: (email: string, password: string) => void;
-}
-
-export default function LoginForm({ onSubmit }: LoginFormProps) {
+export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,11 +22,26 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
     }
 
     setLoading(true);
-    // Auth con WordPress — implementar en tarea posterior
-    if (onSubmit) {
-      onSubmit(email, password);
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Error al iniciar sesión");
+        return;
+      }
+
+      router.push(data.redirect);
+    } catch {
+      setError("Error de conexión, intentá más tarde.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
