@@ -10,6 +10,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* CreaLab brand colors */
+  --color-brand-orange: #FF6B35;
+  --color-brand-yellow: #FFD23F;
+  --color-brand-teal: #4ECDC4;
+  --color-brand-dark: #1A535C;
+  --color-crealab-bg: #F8F9FA;
+  --color-crealab-text: #1A1A2E;
 }
 
 @media (prefers-color-scheme: dark) {
