@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
 const WP_URL = process.env.WP_URL || process.env.NEXT_PUBLIC_WP_URL || "";
-const COOKIE_NAME = "crealab_token";
+export const COOKIE_NAME = "crealab_token";
 
 export async function getTokenFromCookie(): Promise<string | undefined> {
   const cookieStore = await cookies();
