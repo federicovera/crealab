@@ -1,8 +1,4 @@
-import { getTokenFromCookie } from "@/lib/auth";
-
-export default async function DashboardPage() {
-  const token = await getTokenFromCookie();
-
+export default function DashboardPage() {
   return (
     <main className="min-h-screen bg-crealab-bg flex flex-col items-center justify-center p-8">
       <div className="max-w-xl w-full flex flex-col gap-6">
@@ -23,7 +19,7 @@ export default async function DashboardPage() {
         </div>
 
         <a
-          href="/"
+          href="/api/auth/logout"
           className="text-sm text-brand-orange font-bold hover:underline self-start"
         >
           ← Cerrar sesión
