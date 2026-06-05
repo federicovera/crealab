@@ -28,6 +28,8 @@ services:
         if (isset($$_SERVER['HTTP_X_FORWARDED_PROTO']) && $$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
           $$_SERVER['HTTPS'] = 'on';
         }
+        define('JWT_AUTH_SECRET_KEY', '${JWT_SECRET}');
+        define('JWT_AUTH_CORS_ENABLE', true);
     ports:
       - "127.0.0.1:8081:80"
     volumes:
@@ -41,6 +43,7 @@ services:
       - "127.0.0.1:3002:3000"
     environment:
       NEXT_PUBLIC_WP_URL: https://crealab.flowhub.com.ar
+      WP_URL: https://crealab.flowhub.com.ar
 
 volumes:
   crealab_db_data:
